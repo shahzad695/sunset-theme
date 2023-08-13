@@ -1,0 +1,8 @@
+sql/
+public/*
+!.gitignore
+!wp-content/
+public/wp-content/*
+!public/wp-content/themes/
+public/wp-content/themes/*
+!public/wp-content/themes/sunset-premium-theme/
