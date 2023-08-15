@@ -1,0 +1,24 @@
+.siderbar-overview,
+.form-overview {
+  display: inline-block;
+}
+.siderbar-overview {
+  float: left;
+  background-color: rgb(18, 18, 18);
+}
+.sidebar-main {
+  width: 280px;
+  text-align: center;
+}
+.sunset-username,
+.sunset-description {
+  color: rgb(231, 228, 235);
+  padding: 2px;
+}
+.sunset-description {
+  font-size: small;
+  font-weight: 400;
+}
+.form-overview {
+  margin-left: 8px;
+}
