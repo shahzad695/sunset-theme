@@ -4,6 +4,11 @@
     
 ?>
 <div class="siderbar-overview">
+    <div class="image-container">
+        <div id="profile_picture_preview" class="image-background"
+            style="background-image: url(<?php echo $sideBarOptions['profile_picture'] ?>);">
+        </div>
+    </div>
     <div class="sidebar-main">
         <h1 class="sunset-username"><?php echo $sideBarOptions['first_name'] .' '. $sideBarOptions['last_name']  ?></h1>
         <h2 class="sunset-description"><?php echo $sideBarOptions['description'] ?></h2>

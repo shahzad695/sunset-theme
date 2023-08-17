@@ -22,3 +22,19 @@
 .form-overview {
   margin-left: 8px;
 }
+.image-container {
+  display: block;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+}
+.image-background {
+  width: 122px;
+  height: 122px;
+  border-radius: 50%;
+  margin: 20px auto;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}

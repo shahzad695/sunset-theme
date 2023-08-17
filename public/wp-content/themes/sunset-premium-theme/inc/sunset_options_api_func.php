@@ -4,6 +4,7 @@ $sideBarOptions = get_option('sidebar_options');
 function sunset_options_api_settings(){
     register_setting('sunset_theme_settings_group', 'sidebar_options');
     add_settings_section('sunset_theme_options', 'Sidebar options', 'theme_options_section_callback', 'sunset_premium');
+    add_settings_field('profile_picture', 'Profile Picture', 'theme_options_profilepic_callback', 'sunset_premium', 'sunset_theme_options');
     add_settings_field('first_name', 'First Name', 'theme_options_fname_callback', 'sunset_premium', 'sunset_theme_options');
     add_settings_field('last_name', 'Last Name', 'theme_options_lname_callback', 'sunset_premium', 'sunset_theme_options');
     add_settings_field('description', 'Description', 'theme_options_desc_callback', 'sunset_premium', 'sunset_theme_options');
@@ -22,10 +23,13 @@ function sunset_options_api_settings(){
 function theme_options_section_callback(){
    echo 'Customize Sidebar Options';
 }
-function theme_options_fname_callback(){
+function theme_options_profilepic_callback(){
     global $sideBarOptions;?>
+<input type="button" value="Upload Profile Picture" class="button button-primary" id="profile_picture_button">
+<input type="hidden" id="profile_picture" name="sidebar_options[profile_picture]" value=" " <?php }
 
-<input type="text" name="sidebar_options[first_name]"
+function theme_options_fname_callback(){
+    global $sideBarOptions;?> <input type="text" name="sidebar_options[first_name]"
     value="<?Php echo isset($sideBarOptions['first_name']) ? esc_attr($sideBarOptions['first_name']) : '';?>"
     placeholder="First Name">
 <?php }
