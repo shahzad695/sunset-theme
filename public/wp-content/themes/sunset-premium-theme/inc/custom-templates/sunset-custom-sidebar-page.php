@@ -1,4 +1,4 @@
-<h1>Sunset Theme Options Page</h1>
+<h1>Sunset Sidebar Options Page</h1>
 <?php settings_errors();
     global $sideBarOptions;
     
@@ -16,7 +16,7 @@
     </div>
 </div>
 <form method="post" action="options.php" class="form-overview">
-    <?php settings_fields('sunset_theme_settings_group')?>
+    <?php settings_fields('sunset_sidebar_options_group')?>
     <?php do_settings_sections('sunset_premium')?>
     <?php submit_button()?>
 

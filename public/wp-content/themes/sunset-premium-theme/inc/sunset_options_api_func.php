@@ -2,14 +2,20 @@
 global $sideBarOptions;
 $sideBarOptions = get_option('sidebar_options');
 function sunset_options_api_settings(){
-    register_setting('sunset_theme_settings_group', 'sidebar_options');
-    add_settings_section('sunset_theme_options', 'Sidebar options', 'theme_options_section_callback', 'sunset_premium');
-    add_settings_field('profile_picture', 'Profile Picture', 'theme_options_profilepic_callback', 'sunset_premium', 'sunset_theme_options');
-    add_settings_field('first_name', 'First Name', 'theme_options_fname_callback', 'sunset_premium', 'sunset_theme_options');
-    add_settings_field('last_name', 'Last Name', 'theme_options_lname_callback', 'sunset_premium', 'sunset_theme_options');
-    add_settings_field('description', 'Description', 'theme_options_desc_callback', 'sunset_premium', 'sunset_theme_options');
-    add_settings_field('twiter_handle', 'Twiter Handle', 'theme_options_Twiter_callback', 'sunset_premium', 'sunset_theme_options');
-    add_settings_field('facebook_handle', 'Facebook Handle', 'theme_options_Facebook_callback', 'sunset_premium', 'sunset_theme_options');
+    // custom sidebar options settings
+    register_setting('sunset_sidebar_options_group', 'sidebar_options');
+    add_settings_section('sunset_sidebar_options_section', 'Sidebar options', 'theme_options_section_callback', 'sunset_premium');
+    add_settings_field('profile_picture', 'Profile Picture', 'theme_options_profilepic_callback', 'sunset_premium', 'sunset_sidebar_options_section');
+    add_settings_field('first_name', 'First Name', 'theme_options_fname_callback', 'sunset_premium', 'sunset_sidebar_options_section');
+    add_settings_field('last_name', 'Last Name', 'theme_options_lname_callback', 'sunset_premium', 'sunset_sidebar_options_section');
+    add_settings_field('description', 'Description', 'theme_options_desc_callback', 'sunset_premium', 'sunset_sidebar_options_section');
+    add_settings_field('twiter_handle', 'Twiter Handle', 'theme_options_Twiter_callback', 'sunset_premium', 'sunset_sidebar_options_section');
+    add_settings_field('facebook_handle', 'Facebook Handle', 'theme_options_Facebook_callback', 'sunset_premium', 'sunset_sidebar_options_section');
+    
+    // custom add theme support settings
+    register_setting('sunset_add_theme_support_group', 'sunset_custom_theme_support', 'sunset_add_theme_support_callback');
+    add_settings_section('sunset_theme_support_section', 'Add Theme support', 'sunset_theme_support_callback', 'sunset_premium_theme_support');
+    add_settings_field('sunset_post_format', 'Add Required Post format', 'sunset_post_format_callback', 'sunset_premium_theme_support', 'sunset_theme_support_section');
 
 }
 
@@ -19,14 +25,34 @@ function sunset_options_api_settings(){
 
         */
 
+// custom add theme support callback functions
+function sunset_add_theme_support_callback($input){
+    return $input;
+}
+function sunset_theme_support_callback(){
+    echo 'Add theme support';
+}
 
+function sunset_post_format_callback(){
+    $options = get_option('sunset_custom_theme_support');
+    $formats=['aside','gallery','link','image','quote','video','audio','chat'];
+   
+    $output='';
+    foreach ($formats as $format){
+        $checked=(@$options[''.$format.'']==1 ? 'checked' : '');
+            $output.=  '<label><input type="checkbox" name="sunset_custom_theme_support['.$format.']" value="1" '.$checked.'>'.$format.'</label><br/>';    
+    }
+    echo $output;
+}
+
+// custom sidebar options callback functions
 function theme_options_section_callback(){
    echo 'Customize Sidebar Options';
 }
 function theme_options_profilepic_callback(){
     global $sideBarOptions;?>
-<input type="button" value="Upload Profile Picture" class="button button-primary" id="profile_picture_button">
-<input type="hidden" id="profile_picture" name="sidebar_options[profile_picture]" value=" " <?php }
+<input type=" button" value="Upload Profile Picture" class="button button-primary" id="profile_picture_button">
+<input type="hidden" id="profile_picture" name="sidebar_options[profile_picture]" value=" "><?php }
 
 function theme_options_fname_callback(){
     global $sideBarOptions;?> <input type="text" name="sidebar_options[first_name]"
