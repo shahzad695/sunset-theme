@@ -18,6 +18,6 @@
 <form method="post" action="options.php" class="form-overview">
     <?php settings_fields('sunset_sidebar_options_group')?>
     <?php do_settings_sections('sunset_premium')?>
-    <?php submit_button()?>
+    <?php submit_button('Save Changes','primary','btnSubmit')?>
 
 </form>
