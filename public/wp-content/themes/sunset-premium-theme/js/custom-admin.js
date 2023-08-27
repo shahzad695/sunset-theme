@@ -31,7 +31,6 @@ profilePicBtn.addEventListener("click", (e) => {
   mediauploader.open();
 });
 profilePicRemove.addEventListener("click", (e) => {
-  console.log(formSubmitBtn);
   e.preventDefault();
   let answer = confirm("Are you sure you want to remove the profile picture");
 

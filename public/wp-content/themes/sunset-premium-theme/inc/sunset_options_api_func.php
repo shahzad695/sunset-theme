@@ -24,6 +24,10 @@ function sunset_options_api_settings(){
     add_settings_section('sunset_contact_form_section', 'Sunset Contact Form', 'sunset_contact_support_callback', 'sunset_premium_contact_form');
     add_settings_field('sunset_contact_form_field', 'Contact Form', 'sunset_contact_form_field_callback', 'sunset_premium_contact_form', 'sunset_contact_form_section');
 
+    //custom css settings
+    register_setting('sunset_custom_css_group', 'sunset_custom_css');
+    add_settings_section('sunset_custom_css_section', 'Sunset Custom CSS', 'sunset_custom_css_section_callback', 'sunset_premium_css');
+    add_settings_field('sunset_custom_css_field', 'Custom CSS', 'sunset_custom_css_field_callback', 'sunset_premium_css', 'sunset_custom_css_section');
 }
     
     
@@ -33,6 +37,28 @@ function sunset_options_api_settings(){
             ================================================
 
         */
+
+                //custom Css callback
+
+                // function sunset_custom_css_group_callback($input){
+                //     $output = esc_textarea($input);
+                //     echo $output;
+                // }
+
+                function sunset_custom_css_section_callback(){
+                    echo '<p class="paara">customize sunset theme with you own CSS</p>';
+                }
+        
+                
+                function sunset_custom_css_field_callback(){
+                    $css = get_option('sunset_custom_css');
+                    $css=(empty($css) ? '/*Enter some CSS*/' : $css);
+
+                    echo '<div id="customCss">'.$css.'</div><input type="hidden" name="sunset_custom_css" id="sunset_custom_css" value="'.$css.'">'; 
+                }
+
+
+
             //custom contact form settings
             function sunset_contact_support_callback(){
                 echo 'Activate or Deactivate the build in Contact Form';
@@ -49,14 +75,7 @@ function sunset_options_api_settings(){
             }
 
 
-
-
-            // custom add theme support callback functions
-// function sunset_add_theme_support_callback($input){
-//     return $input;
-// }
-
-
+// custom add theme support callbacks
 
 function sunset_theme_support_callback(){
     echo 'Add theme support';

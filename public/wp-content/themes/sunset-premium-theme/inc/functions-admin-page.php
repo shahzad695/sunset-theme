@@ -31,7 +31,7 @@ function sunset_custom_menu_page(){
     require_once get_template_directory().'/inc/custom-templates/sunset-custom-sidebar-page.php';
 }
 function sunset_custom_css_page(){
-    echo '<h1>Custom Css page</h1>';
+    require_once get_template_directory().'/inc/custom-templates/sunset-custom-css-page.php';
 }
 function sunset_custom_theme_support_page(){
     require_once get_template_directory().'/inc/custom-templates/sunset-custom-theme-support-page.php';
