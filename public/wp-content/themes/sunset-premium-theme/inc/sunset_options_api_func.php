@@ -19,18 +19,45 @@ function sunset_options_api_settings(){
     add_settings_field('sunset_custom_header', 'Custom Header', 'sunset_custom_header_callback', 'sunset_premium_theme_support', 'sunset_theme_support_section');
     add_settings_field('sunset_custom_background', 'Custom background', 'sunset_custom_background_callback', 'sunset_premium_theme_support', 'sunset_theme_support_section');
 
+    //custom contact form settings
+    register_setting('sunset_contact_form_group', 'sunset_custom_contact_form');
+    add_settings_section('sunset_contact_form_section', 'Sunset Contact Form', 'sunset_contact_support_callback', 'sunset_premium_contact_form');
+    add_settings_field('sunset_contact_form_field', 'Contact Form', 'sunset_contact_form_field_callback', 'sunset_premium_contact_form', 'sunset_contact_form_section');
+
 }
+    
+    
 
         /*  ==============================================
                     Callback Functions
             ================================================
 
         */
+            //custom contact form settings
+            function sunset_contact_support_callback(){
+                echo 'Activate or Deactivate the build in Contact Form';
+            }
+    
+            
+            function sunset_contact_form_field_callback(){
+                $options = get_option('sunset_custom_contact_form');
+               
+                    $checked=(@$options==1 ? 'checked' : '');
+                        $output =  '<label><input type="checkbox" name="sunset_custom_contact_form" value="1" '.$checked.'></label><br/>';    
+            
+                echo $output;
+            }
 
-// custom add theme support callback functions
-function sunset_add_theme_support_callback($input){
-    return $input;
-}
+
+
+
+            // custom add theme support callback functions
+// function sunset_add_theme_support_callback($input){
+//     return $input;
+// }
+
+
+
 function sunset_theme_support_callback(){
     echo 'Add theme support';
 }
