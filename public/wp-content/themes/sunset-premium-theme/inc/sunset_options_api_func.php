@@ -25,7 +25,7 @@ function sunset_options_api_settings(){
     add_settings_field('sunset_contact_form_field', 'Contact Form', 'sunset_contact_form_field_callback', 'sunset_premium_contact_form', 'sunset_contact_form_section');
 
     //custom css settings
-    register_setting('sunset_custom_css_group', 'sunset_custom_css');
+    register_setting('sunset_custom_css_group', 'sunset_custom_css','sunset_custom_css_group_callback');
     add_settings_section('sunset_custom_css_section', 'Sunset Custom CSS', 'sunset_custom_css_section_callback', 'sunset_premium_css');
     add_settings_field('sunset_custom_css_field', 'Custom CSS', 'sunset_custom_css_field_callback', 'sunset_premium_css', 'sunset_custom_css_section');
 }
@@ -40,10 +40,10 @@ function sunset_options_api_settings(){
 
                 //custom Css callback
 
-                // function sunset_custom_css_group_callback($input){
-                //     $output = esc_textarea($input);
-                //     echo $output;
-                // }
+                function sunset_custom_css_group_callback($input){
+                    $output = esc_textarea($input);
+                    return $output;
+                }
 
                 function sunset_custom_css_section_callback(){
                     echo '<p class="paara">customize sunset theme with you own CSS</p>';
