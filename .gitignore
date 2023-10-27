@@ -6,3 +6,4 @@ public/wp-content/*
 !public/wp-content/themes/
 public/wp-content/themes/*
 !public/wp-content/themes/sunset-premium-theme/
+node_modules/
