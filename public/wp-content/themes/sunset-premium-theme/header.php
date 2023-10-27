@@ -20,6 +20,14 @@
             </h1>
             <h2 class="header__descrip"><?php bloginfo('description')?></h2>
         </div>
-        <nav class="header__nav"></nav>
+
+        <nav class="header__nav">
+            <?php wp_nav_menu([
+                'theme_location' =>'primary',
+                'container' =>false,
+                'menu_class' =>'header__menu',
+                
+            ]);?>
+        </nav>
 
     </header>
