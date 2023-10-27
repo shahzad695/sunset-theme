@@ -17,3 +17,11 @@ $background = get_option('sunset_custom_theme_support');
 if(!empty($background['sunset_custom_background'])){
     add_theme_support('custom-background');
 }
+
+/* 
+Add support for Nav Menu
+*/
+function sunset_register_nav_menu(){
+    register_nav_menu('primary', 'Header Nav Menu');
+}
+add_action('after_setup_theme', 'sunset_register_nav_menu');
