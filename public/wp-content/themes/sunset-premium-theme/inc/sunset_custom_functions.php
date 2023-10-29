@@ -20,5 +20,19 @@ function sunset_post_meta(){
 
 
 function sunset_footer_info(){
-    echo 'footer info goes here';
+    $comments_num= get_comments_number();
+   
+    if(comments_open()){
+        if(!$comments_num == 0){
+            $comments = __('No Comments');
+        }elseif($comments_num>1 ){
+            $comments = $comments_num . __(' Comments'); 
+        }else{
+            $comments = __('1 Comment');
+        }
+        // $comments = '<a href="'.get_comment_link().'">'.$comments.'<span class="sunset-icon sunset-comment"></span></a>';
+    }else{
+        $comments = __('Comments closed');
+    }
+    return '<div class="post__footer"><span class="post__tags">'.get_the_tag_list('<div class="post_tags"><span class="sunset-icon sunset-tag"></span>', ' ', '</div>').'  </span><span class="post__comments">'.$comments.'<span class="sunset-icon sunset-comment"></span></span></div>';
 }

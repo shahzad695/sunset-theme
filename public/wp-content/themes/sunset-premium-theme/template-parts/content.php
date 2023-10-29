@@ -14,8 +14,11 @@
     <summary class="post__excerpt">
         <?php the_excerpt();?>
     </summary>
+    <button class="btn">
+        <a href="<?php the_permalink();?>" class="btn__link">Read More</a>
+    </button>
     <footer class="post__footer">
-        <?php sunset_footer_info();?>
+        <?php echo sunset_footer_info();?>
 
     </footer>
 </article>
