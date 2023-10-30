@@ -9,8 +9,31 @@
 }
 
 .link {
-  text-decoration: none;
-  transition: all 0.5s;
+  &:link,
+  &:visited {
+    color: $light-grey;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 0.5s;
+  }
+  &:hover,
+  &:active {
+    color: black;
+    font-weight: 600;
+  }
+}
+.link--btn {
+  &:link,
+  &:visited {
+    color: $dark-white;
+  }
+  &:active,
+  &:hover {
+    background-color: $primary;
+    color: $light-white;
+  }
 }
 
 .link--underline {
@@ -43,4 +66,11 @@
       transform: translateY(-6px);
     }
   }
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid $dark-white;
+  padding: 0.8rem 1rem;
+  margin-bottom: 2.4rem;
 }

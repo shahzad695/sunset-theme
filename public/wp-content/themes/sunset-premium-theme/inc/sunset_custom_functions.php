@@ -11,11 +11,11 @@ function sunset_post_meta(){
         if($i>1){
             $output .= $separator;
         }
-       $output .= '<a href="'.esc_url(get_category_link($category->term_id)).'">'.$category->name.'</a>';
+       $output .= '<a class="link" href="'.esc_url(get_category_link($category->term_id)).'">'.$category->name.'</a>';
       $i++; 
     }}
     
-    return '<span class="post_time"> posted  <a href="'.esc_url(get_permalink()).'">'  .$post_time . ' </a> ago in </span> <span class="post_category">' .$output. '</span>';
+    return '<span class="post_time"> posted  <a class="link" href="'.esc_url(get_permalink()).'">'  .$post_time . ' </a> ago in </span> <span class="post_category">' .$output. '</span>';
 }
 
 
@@ -34,5 +34,5 @@ function sunset_footer_info(){
     }else{
         $comments = __('Comments closed');
     }
-    return '<div class="post__footer"><span class="post__tags">'.get_the_tag_list('<div class="post_tags"><span class="sunset-icon sunset-tag"></span>', ' ', '</div>').'  </span><span class="post__comments">'.$comments.'<span class="sunset-icon sunset-comment"></span></span></div>';
+    return ''.get_the_tag_list('<div class="post__tags link"><span class="sunset-icon sunset-tag"></span>', ' ', '</div>').' <div class="post__comments">'.$comments.'<span class="sunset-icon sunset-comment"></span></div>';
 }
