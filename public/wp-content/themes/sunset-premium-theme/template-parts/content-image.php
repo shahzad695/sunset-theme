@@ -1,7 +1,7 @@
 <article id="post-<?php the_ID()?>" <?php post_class('post');?>>
-    <?php if( has_post_thumbnail()){
-            $thumbnailurl= get_the_post_thumbnail_url(get_the_ID());
-        }?>
+
+    <?php $thumbnailurl= sunset_retrive_pics();?>
+
     <header class="post__header post__header--image" style="background-image: url('<?php echo $thumbnailurl?>')">
         <?php the_title('<h1 class="post__title"><a href="'.get_permalink().'" class="link">', '</a></h1>');
         ?>
