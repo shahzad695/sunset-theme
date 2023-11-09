@@ -1,0 +1,58 @@
+.carusole {
+  position: relative;
+  padding: 2.4rem;
+  &__btn {
+    background-color: rgba(0, 0, 0, 0.39);
+    position: absolute;
+    z-index: 10;
+    color: white;
+    padding: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &__btn--left {
+    left: 2.5%;
+  }
+  &__btn--right {
+    right: 2.5%;
+  }
+  &__btn--hide {
+    display: none;
+  }
+  &__container {
+    position: relative;
+  }
+  &__track {
+    list-style: none;
+  }
+  &__item {
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20rem;
+    display: none;
+  }
+  &__item--current {
+    display: block;
+  }
+  &__nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    position: absolute;
+    width: 100%;
+    height: 3.6rem;
+    bottom: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    background-color: rgba(0, 0, 0, 0.208);
+  }
+  &__dot {
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 1rem;
+    width: 3.6rem;
+    border-radius: 25%;
+  }
+  &__dot--current {
+    background-color: rgba(255, 255, 255, 0.42);
+  }
+}

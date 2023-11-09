@@ -1,0 +1,129 @@
+.post {
+  margin: 7.4rem 0;
+  text-align: center;
+  border-bottom: 2px solid $light-white;
+  position: relative;
+  &__header {
+    margin-bottom: 2rem;
+    text-transform: capitalize;
+  }
+  &__title {
+    font-size: 3.6rem;
+    margin-bottom: 1.2rem;
+    &::before,
+    &::after {
+      content: "~";
+      font-size: 2.4rem;
+    }
+    &::before {
+      margin-right: 0.8rem;
+    }
+    &::after {
+      margin-left: 0.8rem;
+    }
+  }
+  &__thumbnail {
+    height: 30rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.35);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+  &__thumbnail--link {
+    &:hover,
+    &:active {
+      .post__thumbnail {
+        &:after {
+          background-color: rgba(0, 0, 0, 0);
+        }
+      }
+    }
+  }
+
+  &__excerpt {
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+    letter-spacing: 0.05rem;
+    text-align: left;
+  }
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    margin: 2.4rem 0 1.2rem;
+  }
+  &__tags {
+    display: flex;
+    gap: 1.2rem;
+  }
+  &__comments {
+    display: flex;
+    gap: 1.2rem;
+  }
+  /*
+=====================================
+    Image Post type
+=====================================
+*/
+
+  &__header--image {
+    height: 50rem;
+    // color: $white;
+    background-position: center;
+    padding: 1.2rem;
+  }
+  &__excerpt--image {
+    position: absolute;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 1.6rem;
+    background-image: linear-gradient(
+      to bottom,
+      hsla(0, 0%, 0%, 0.498),
+      rgba(186, 186, 186, 0.171)
+    );
+    color: $white;
+    left: 0;
+    right: 0;
+    bottom: 32px;
+  }
+  /*
+=====================================
+    Audio Post type
+=====================================  
+*/
+  &__content iframe {
+    height: 15rem;
+    width: 100%;
+  }
+  &__header--audio {
+    display: flex;
+    align-items: end;
+    gap: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+  &__title--audio {
+    font-size: 2rem;
+    margin-bottom: 0;
+    &::before,
+    &::after {
+      content: "";
+    }
+  }
+  /*
+=====================================
+    video Post type
+=====================================  
+*/
+  &__header--video iframe {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+}
