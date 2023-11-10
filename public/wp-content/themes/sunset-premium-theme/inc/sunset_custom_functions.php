@@ -57,6 +57,7 @@ function sunset_footer_info(){
             $output=$embeded[0];
         }
         return $output;
+<<<<<<< HEAD
     }
 
     /*  =====================================
@@ -88,3 +89,6 @@ function sunset_footer_info(){
             
            return $output;
         }
+=======
+    }
+>>>>>>> 0103bea12462fd55242c7f752f3a93e2a9a646aa
