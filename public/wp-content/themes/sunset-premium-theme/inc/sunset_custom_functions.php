@@ -73,9 +73,10 @@ function sunset_footer_info(){
                 $attachments = get_posts([
                     'post_type' => 'attachment',
                     'numberposts' =>$num,
-                    'post_parents' => get_the_ID()
+                    'post_parent' => get_the_ID()
+                    
                 ]);
-                
+               
                 if ($attachments&& $num==1){
                     foreach ($attachments as $attachment) {
                         $output = wp_get_attachment_url($attachment->ID);
