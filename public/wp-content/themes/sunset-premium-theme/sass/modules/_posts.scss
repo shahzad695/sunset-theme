@@ -128,4 +128,27 @@
     width: 100%;
     margin-bottom: 2rem;
   }
+  /*
+=====================================
+    Gallery Post type
+=====================================  
+*/
+  &__excerpt--gallery {
+    position: absolute;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 1.6rem;
+    background-image: linear-gradient(
+      to bottom,
+      hsla(0, 0%, 0%, 0.498),
+      rgba(186, 186, 186, 0.171)
+    );
+    color: $white;
+    left: 0;
+    right: 0;
+    bottom: 32px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
