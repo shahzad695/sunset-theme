@@ -8,21 +8,41 @@
     z-index: 10;
     color: white;
     border: none;
-    padding: 0.8rem;
+    padding: 1.4rem;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
   }
+
   &__btn--left {
-    left: 2.5%;
+    left: 2%;
+
+    padding-right: 5.8rem;
+    border-radius: 0 5rem 5rem 0;
   }
   &__btn--right {
-    right: 2.5%;
+    right: 2%;
+
+    padding-left: 5.8rem;
+    border-radius: 5rem 0 0 5rem;
   }
-  &__btn--hide {
-    display: none;
+  &__btn-thumb {
+    position: absolute;
+    display: block;
+    z-index: 1;
+    background-color: rgb(137, 133, 133);
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    top: 50%;
+    cursor: pointer;
+    transform: translateY(-50%);
   }
-  &__container {
-  
+  &__btn-thumb--right {
+    right: 6%;
+  }
+  &__btn-thumb--left {
+    left: 6%;
   }
   &__track {
     list-style: none;
@@ -30,18 +50,20 @@
     padding: 0;
     margin: 0;
     width: 100%;
-   height: 100%;
+    height: 100%;
   }
   &__item {
     position: absolute;
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-   
+    top: 0;
+    bottom: 0;
   }
   &__item--current {
     opacity: 1;
@@ -60,7 +82,7 @@
     bottom: 0;
     left: 50%;
     transform: translatex(-50%);
-    background-color: rgba(0, 0, 0, 0.221);
+    background-color: rgba(0, 0, 0, 0.301);
   }
   &__dot {
     background-color: rgba(255, 255, 255, 0.352);
@@ -74,4 +96,7 @@
     background-color: rgba(255, 255, 255, 0.763);
     transition: all 1s ease-in;
   }
+}
+.sunset-icon {
+  font-size: 1.8rem;
 }
