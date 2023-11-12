@@ -151,4 +151,30 @@
     visibility: hidden;
     pointer-events: none;
   }
+  /*
+=====================================
+    Gallery Post type
+=====================================  
+*/
+  &__content--quote {
+    line-height: 1.3;
+    margin: 0 auto 0.8rem;
+    &:before,
+    :after {
+      content: "";
+      display: inline;
+      position: relative;
+      color: $lighter-grey;
+    }
+    &:before {
+      content: '"';
+    }
+    &:after {
+      content: '"';
+    }
+  }
+  &__quote-author {
+    font-size: 1rem;
+    color: $lightest-grey;
+  }
 }

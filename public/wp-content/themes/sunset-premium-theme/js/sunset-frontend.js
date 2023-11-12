@@ -49,30 +49,15 @@ function elementDeclaration() {
   };
 }
 document.addEventListener("DOMContentLoaded", () => {
-  let {
-    currentSlide,
-    nextSlide,
-    prevSlide,
-    currentSlideIndex,
-    nextSlideIndex,
-    prevSlideIndex,
-    currentDot,
-  } = elementDeclaration();
+  let { currentSlide } = elementDeclaration();
   let prevThumb = currentSlide.dataset.previmage;
   carusoleLeftThumb.style.backgroundImage = `url(${prevThumb})`;
   let nextThumb = currentSlide.dataset.nextimage;
   carusoleRightThumb.style.backgroundImage = `url(${nextThumb})`;
 });
 carusoleNextButton.addEventListener("click", function (e) {
-  let {
-    currentSlide,
-    nextSlide,
-    prevSlide,
-    currentSlideIndex,
-    nextSlideIndex,
-    prevSlideIndex,
-    currentDot,
-  } = elementDeclaration();
+  let { currentSlide, nextSlide, nextSlideIndex, currentDot } =
+    elementDeclaration();
 
   let nextDot = dots[nextSlideIndex];
 
@@ -80,15 +65,8 @@ carusoleNextButton.addEventListener("click", function (e) {
   moveDot(currentDot, nextDot);
 });
 carusolePrevButton.addEventListener("click", function (e) {
-  let {
-    currentSlide,
-    nextSlide,
-    prevSlide,
-    currentSlideIndex,
-    nextSlideIndex,
-    prevSlideIndex,
-    currentDot,
-  } = elementDeclaration();
+  let { currentSlide, prevSlide, prevSlideIndex, currentDot } =
+    elementDeclaration();
 
   let prevDot = dots[prevSlideIndex];
   moveSlide(currentSlide, prevSlide);
