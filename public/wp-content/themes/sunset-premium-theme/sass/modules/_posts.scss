@@ -177,4 +177,23 @@
     font-size: 1rem;
     color: $lightest-grey;
   }
+  /*
+=====================================
+    Link Post type
+=====================================  
+*/
+  &__title--link {
+    &::before,
+    &::after {
+      content: "";
+    }
+  }
+  &__link {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    padding-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.212);
+  }
 }

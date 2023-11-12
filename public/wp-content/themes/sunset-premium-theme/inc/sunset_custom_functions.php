@@ -88,3 +88,14 @@ function sunset_footer_info(){
             
            return $output;
         }
+  /*  =====================================
+            sunset  retrive links
+        ===================================== */
+        
+        function sunset_retrive_links(){
+        
+          if(!  preg_match('/<a\s[^>]*?href=[\'"](.+?)[\'"]/i',get_the_content(),$links)){
+            return false;
+          };
+            return esc_url_raw($links[1]);
+        }
