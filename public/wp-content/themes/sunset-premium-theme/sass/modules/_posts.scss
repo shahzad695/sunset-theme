@@ -196,4 +196,41 @@
     padding-top: 1rem;
     background-color: rgba(0, 0, 0, 0.212);
   }
+  /*
+=====================================
+  Aside Post type
+=====================================  
+*/
+  &__aside-container {
+    background-color: rgba(0, 0, 0, 0.078);
+  }
+  &__content--aside {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-bottom: 1.6rem;
+    position: relative;
+  }
+  &__thumbnail--aside {
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -7;
+    left: 20;
+  }
+  &__header--aside {
+    margin: 0.4rem 0 0.8rem 14rem;
+    text-align: left;
+  }
+  &__excerpt--aside {
+    margin-bottom: 0;
+    flex-basis: 65rem;
+  }
+  &__footer--aside {
+    background-color: rgba(0, 0, 0, 0.158);
+    margin: 0;
+    padding: 0.4rem 0.4rem 0.4rem 13rem;
+  }
 }
