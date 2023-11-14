@@ -19,6 +19,11 @@ if(!empty($background['sunset_custom_background'])){
 }
 
 /* 
+Add support for thumbnail images
+*/
+add_theme_support('post-thumbnails');
+
+/* 
 Add support for Nav Menu
 */
 function sunset_register_nav_menu(){

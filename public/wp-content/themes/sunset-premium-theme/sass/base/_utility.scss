@@ -7,3 +7,69 @@
 .container--m {
   max-width: 93rem;
 }
+
+.link {
+  &:link,
+  &:visited {
+    color: $light-grey;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    transition: all 0.5s;
+  }
+  &:hover,
+  &:active {
+    color: black;
+    font-weight: 600;
+  }
+}
+.link--btn {
+  &:link,
+  &:visited {
+    color: $dark-white;
+  }
+  &:active,
+  &:hover {
+    background-color: $primary;
+    color: $light-white;
+  }
+}
+
+.link--underline {
+  &:link,
+  &:visited {
+    color: #fff;
+    opacity: 0.7;
+
+    &::after {
+      content: " ";
+      display: block;
+      padding-top: 0.8rem;
+      border-bottom: 2px solid #fff;
+      opacity: 0;
+      transition: all 0.3s ease;
+      transform: translateY(3px);
+    }
+  }
+  &:active,
+  &:hover {
+    color: #fff;
+    opacity: 1;
+
+    &::after {
+      content: " ";
+      display: block;
+      padding-top: 0.8rem;
+      border-bottom: 2px solid #fff;
+      opacity: 1;
+      transform: translateY(-6px);
+    }
+  }
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid $dark-white;
+  padding: 0.8rem 1rem;
+}
