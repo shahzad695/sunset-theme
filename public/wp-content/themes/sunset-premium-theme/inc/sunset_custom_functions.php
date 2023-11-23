@@ -99,3 +99,23 @@ function sunset_footer_info(){
           };
             return esc_url_raw($links[1]);
         }
+ /*  =====================================
+        Ajax infinite scroll
+    ===================================== */
+    add_action('wp_ajax_nopriv_sunset_infinite_scroll', 'sunset_infinite_scroll');
+    add_action('wp_ajax_sunset_infinite_scroll', 'sunset_infinite_scroll');
+
+    function sunset_infinite_scroll(){
+        $page_no = $_POST['page'];
+        $page_no = $page_no+1;
+        $scrol_posts = new WP_Query([
+            'post_status' => 'publish',
+            'paged'       =>   $page_no,
+        ]);
+
+        while ($scrol_posts->have_posts()){
+            $scrol_posts->the_post();
+            get_template_part('template-parts/content', get_post_format());
+        }
+        wp_reset_postdata();
+    }
