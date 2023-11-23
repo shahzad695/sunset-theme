@@ -2,7 +2,6 @@ export default class Slider {
   // select DOM elements
 
   constructor() {
-    console.log("slider ran");
     this.carusoleRightThumb = document.querySelector(
       ".carusole__btn-thumb--right"
     );
