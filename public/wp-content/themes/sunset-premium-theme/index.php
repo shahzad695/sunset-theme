@@ -10,8 +10,9 @@ get_header();?>
 
 </main>
 <div class="header__load-more-btn" data-adminurl="<?php echo admin_url('admin-ajax.php') ?>">
+    <span class="sunset-icon sunset-loading"></span>
     <a href="" class="btn link link-btn btn--loadmore" data-adminurl="<?php echo admin_url('admin-ajax.php') ?>"
-        data-page="1"><span class="sunset-icon sunset-loading"></span>
+        data-page="1">
         Load
         More</a>
 </div>

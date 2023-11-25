@@ -118,4 +118,5 @@ function sunset_footer_info(){
             get_template_part('template-parts/content', get_post_format());
         }
         wp_reset_postdata();
+        die();
     }
