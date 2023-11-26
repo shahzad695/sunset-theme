@@ -109,6 +109,7 @@ function sunset_footer_info(){
         $page_no = $_POST['page'];
         $page_no = $page_no+1;
         $scrol_posts = new WP_Query([
+            'post_type' => 'post',
             'post_status' => 'publish',
             'paged'       =>   $page_no,
         ]);
