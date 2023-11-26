@@ -29,6 +29,7 @@ export default class PostLoader {
     });
     const response = await axios.post(url, params);
     this.postContainer.innerHTML += response.data;
+    window.history.pushState("", "", "page/" + (+page + 1));
     this.loadIcon.classList.remove("spin");
     this.loadBtn.classList.remove("btn-remove");
     let carusole = document.querySelector(".carusole");
