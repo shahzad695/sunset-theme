@@ -7,9 +7,10 @@ module.exports = {
     }),
   ],
   mode: "production",
-  watch: true,
+
   entry:
-    "./public/wp-content/themes/sunset-premium-theme/sass/sunset-frontend.scss",
+    "./public/wp-content/themes/sunset-premium-theme/final-assets/sunset-frontend.js",
+
   output: {
     filename: "sunset-frontend-js-compiled.js",
     path: path.resolve(
@@ -23,7 +24,13 @@ module.exports = {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: { loader: "babel-loader" },
+      },
     ],
   },
+  watch: true,
   devtool: "source-map",
 };

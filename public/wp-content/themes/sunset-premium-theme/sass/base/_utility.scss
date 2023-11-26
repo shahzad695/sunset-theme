@@ -73,3 +73,30 @@
   border: 1px solid $dark-white;
   padding: 0.8rem 1rem;
 }
+.btn-remove {
+  display: none;
+}
+
+.header__load-more-btn {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+.sunset-loading {
+  display: inline;
+  margin-bottom: 1.4rem;
+}
+.spin {
+  animation: rotation 0.5s infinite;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
