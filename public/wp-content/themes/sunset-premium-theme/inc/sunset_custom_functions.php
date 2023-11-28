@@ -113,11 +113,15 @@ function sunset_footer_info(){
             'post_status' => 'publish',
             'paged'       =>   $page_no,
         ]);
-
+        if($scrol_posts->have_posts()){
+        echo '<div class="page-limit" data-pageurl="/page/'.$page_no.'">';
         while ($scrol_posts->have_posts()){
             $scrol_posts->the_post();
+            
             get_template_part('template-parts/content', get_post_format());
+            
         }
+        echo '</div>';
         wp_reset_postdata();
         die();
-    }
+    }}

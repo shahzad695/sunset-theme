@@ -3,11 +3,7 @@
   text-align: center;
   border-bottom: 2px solid $light-white;
   position: relative;
-  opacity: 0;
   animation: all 1s ease-in-out;
-  &--reveal {
-    opacity: 1;
-  }
   &__header {
     margin-bottom: 2rem;
     text-transform: capitalize;
