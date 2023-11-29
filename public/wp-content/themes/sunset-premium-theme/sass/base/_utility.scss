@@ -77,12 +77,13 @@
   display: none;
 }
 
-.header__load-more-btn {
+.header__loadbtn {
   text-align: center;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: space-around;
+  margin: 0.8rem;
 }
 
 .sunset-loading {
@@ -91,6 +92,9 @@
 }
 .spin {
   animation: rotation 0.5s infinite;
+}
+.hide {
+  display: none;
 }
 @keyframes rotation {
   from {

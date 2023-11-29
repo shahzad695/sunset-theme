@@ -2,80 +2,83 @@ import axios from "axios";
 import Slider from "./slider";
 export default class PostLoader {
   constructor() {
-    this.loadBtn = document.querySelector(".btn--loadmore");
+    this.loadNextBtn = document.querySelector(".header__loadbtn--next");
+    this.loadPrevBtn = document.querySelector(".header__loadbtn--prev");
+    this.loadBtn = document.querySelector(".header__loadbtn");
     this.loadIcon = document.querySelector(".sunset-loading");
     this.postContainer = document.querySelector("#post_container");
     this.pageLimit = document.querySelectorAll(".page-limit");
+    this.maxPage = this.pageLimit[0].dataset.maxpage;
+    this.url = this.loadBtn.dataset.adminurl;
     this.loading = false;
     this.events();
-    this.observer();
+    this.urlUpdater();
   }
   //   events
   events() {
-    document.addEventListener("DOMContentLoaded", () => {
-      window.addEventListener("scroll", () => {
-        console.log("scroll");
-        this.loadTriger();
-        this.observer();
-      });
-    });
+    this.nextPostTriger();
+    this.prevPostTriger();
   }
+
   // methods
-  async loadTriger() {
-    let url = this.loadBtn.dataset.adminurl;
-    let page = this.loadBtn.dataset.page;
-    let maxPage = this.pageLimit[0].dataset.maxpage;
 
-    // this.pageLimit.setAttribute("data-page", +page + 1);
-    // this.loadIcon.classList.add("spin");
-    // this.loadBtn.classList.add("btn-remove");
-    const params = new URLSearchParams({
-      action: "sunset_infinite_scroll",
-      page: page,
-    });
-    let scrollPosition = window.scrollY;
-    let browerHeight = window.innerHeight;
-    let currentHeight = scrollPosition + browerHeight;
-    let totaldocumentHeight = document.documentElement.scrollHeight - 100;
-    let newContentReady = currentHeight >= totaldocumentHeight;
-    if (!this.loading && newContentReady) {
-      console.log(page, maxPage);
+  nextPostTriger() {
+    let loadMorebtn = document.querySelectorAll(".header__loadbtn--next");
 
-      if (page <= maxPage) {
-        // console.log("axios sent");
-        this.loading = true;
+    let observer = new IntersectionObserver(
+      (loadMore) => {
+        loadMore.forEach(async (loadMore) => {
+          if (!loadMore.isIntersecting) return;
+          let pageNo = this.loadNextBtn.dataset.nextpage;
+          console.log(pageNo, this.maxPage);
+          if (!this.loading && pageNo < this.maxPage) {
+            console.log(pageNo, this.maxPage);
 
-        try {
-          const response = await axios.post(url, params);
-
-          var result = response.data;
-
-          if (result) {
-            this.postContainer.innerHTML += result;
-            this.loadBtn.setAttribute("data-page", +page + 1);
-            this.loading = false;
-            // let pageurl = document.querySelectorAll(".page-limit");
-            // console.log(pageurl);
-            // pageurl.forEach((page, index, arr) => {
-            //   if (index == arr.length - 1) {
-            //     console.log(index, arr.length);
-            //     window.history.pushState(
-            //       "",
-            //       "",
-            //       page.getAttribute("data-pageurl")
-            //     );
-            //   }
-            // });
-
-            // Update the URL
-            // updateUrl(page);
+            // console.log("axios sent");
+            this.loading = true;
+            const params = new URLSearchParams({
+              action: "sunset_infinite_scroll",
+              page: pageNo,
+            });
+            try {
+              const response = await axios.post(this.url, params);
+              console.log(response);
+              const result = response.data;
+              if (result) {
+                this.postContainer.innerHTML += result;
+                console.log("axios completed");
+                this.loadNextBtn.setAttribute("data-nextpage", +pageNo + 1);
+                this.loading = false;
+                this.urlUpdater();
+              }
+            } catch (error) {
+              console.log("Error fetching data:", error);
+              this.loading = false;
+            }
           }
-        } catch (error) {
-          console.log("Error fetching data:", error);
-          this.loading = false;
-        }
-      }
-    }
+        });
+      },
+      { threshold: [0.65] /*, rootMargin: "-100px"*/ }
+    );
+    loadMorebtn.forEach((btn) => {
+      observer.observe(btn);
+    });
+
+    // let scrollPosition = window.scrollY;
+    // let browerHeight = window.innerHeight;
+    // let currentHeight = scrollPosition + browerHeight;
+    // let totaldocumentHeight = document.documentElement.scrollHeight - 100;
+    // let newContentReady = currentHeight >= totaldocumentHeight;
+    // if (!this.loading && newContentReady) {
+    //   console.log(page, this.maxPage);
+
+    //   if (page <= this.maxPage) {
+    //     // console.log("axios sent");
+    //     this.loading = true;
+    //     this.axiosRequest(this.url, page);
+    //     this.loadBtn.setAttribute("data-page", +page + 1);
+    //   }
+    // }
 
     // this.loadIcon.classList.remove("spin");
     // this.loadBtn.classList.remove("btn-remove");
@@ -85,11 +88,55 @@ export default class PostLoader {
     //   new Slider();
     // }
   }
-  observer() {
+  prevPostTriger() {
+    let loadprevbtn = document.querySelector(".header__loadbtn--prev");
+    console.log("loadMorebtn");
+
+    let observer = new IntersectionObserver(
+      (loadMore) => {
+        loadMore.forEach(async (loadMore) => {
+          console.log("pevload ran", loadMore.isIntersecting);
+          if (!loadMore.isIntersecting) return;
+          let prevpageNo = this.loadPrevBtn.dataset.prevpage;
+          let pageNo = prevpageNo - 2;
+          if (!this.loading && pageNo <= this.maxPage) {
+            console.log(pageNo, this.maxPage);
+
+            // console.log("axios sent");
+            this.loading = true;
+            const params = new URLSearchParams({
+              action: "sunset_infinite_scroll",
+              page: pageNo,
+            });
+            try {
+              const response = await axios.post(this.url, params);
+              const result = response.data;
+              if (result) {
+                this.postContainer.insertAdjacentHTML("afterbegin", result);
+                console.log("axios completed");
+                this.loadPrevBtn.setAttribute("data-prevpage", +pageNo - 1);
+                this.loading = false;
+                this.urlUpdater();
+              }
+            } catch (error) {
+              console.log("Error fetching data:", error);
+              this.loading = false;
+            }
+          }
+        });
+      },
+      { threshold: [0.65] /*, rootMargin: "-100px"*/ }
+    );
+
+    observer.observe(loadprevbtn);
+  }
+  urlUpdater() {
     this.pageLimit = document.querySelectorAll(".page-limit");
+    console.log(this.pageLimit);
     let observer = new IntersectionObserver(
       (pages) => {
         pages.forEach((page) => {
+          console.log("urlUpdater pages ran", page.target.baseURI);
           if (!page.isIntersecting) {
             return;
           }
@@ -106,6 +153,10 @@ export default class PostLoader {
       observer.observe(page);
     });
   }
+
+  // loadPrevPage(page) {
+  //   this.axiosRequest(this.url, page);
+  // }
 
   reveal() {
     let post = document.querySelectorAll(".post:not(.post--reveal");
