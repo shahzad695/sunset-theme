@@ -21,6 +21,7 @@ export default class PostLoader {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         let postLoader = e.target;
+        console.log(this.pageLimit);
         this.loadmorePostHandler(postLoader);
       });
     });
@@ -30,17 +31,24 @@ export default class PostLoader {
   async loadmorePostHandler(postLoader) {
     postLoader.previousElementSibling.classList.add("spin");
     postLoader.classList.add("btn-remove");
+
     let pageNo = postLoader.dataset.page;
     let newPage;
     let prevNo = postLoader.dataset.prev;
+    let archive = postLoader.dataset.archive;
+    console.log(archive);
     if (prevNo == undefined) {
       prevNo = 0;
+    }
+    if (archive == undefined) {
+      archive = 0;
     }
     if (pageNo <= this.maxPage && pageNo > 0) {
       const params = new URLSearchParams({
         action: "sunset_infinite_scroll",
         page: pageNo,
         prev: prevNo,
+        archive: archive,
       });
       try {
         const response = await axios.post(this.url, params);
@@ -52,7 +60,6 @@ export default class PostLoader {
 
             this.postContainer.insertAdjacentHTML("afterbegin", result);
           } else {
-            console.log("next loader");
             newPage = +pageNo + 1;
 
             this.postContainer.innerHTML += result;
@@ -74,16 +81,17 @@ export default class PostLoader {
   }
 
   urlUpdaterHandler() {
-    this.pageLimit = document.querySelectorAll(".page-limit");
-    console.log(this.pageLimit);
+    let pageLimit = document.querySelectorAll(".page-limit");
+    console.log(pageLimit);
     let observer = new IntersectionObserver(
       (pages) => {
         pages.forEach((page) => {
-          console.log("urlUpdater pages ran", page.target.baseURI);
+          console.log("urlUpdater pages ran", page, page.target.baseURI);
           if (!page.isIntersecting) {
             return;
           }
-          window.history.pushState(
+          console.log(window.history);
+          window.history.replaceState(
             "",
             "",
             page.target.getAttribute("data-pageurl")
@@ -92,7 +100,7 @@ export default class PostLoader {
       },
       { threshold: [0.15], rootMargin: "-10%" }
     );
-    this.pageLimit.forEach((page) => {
+    pageLimit.forEach((page) => {
       observer.observe(page);
     });
   }

@@ -108,17 +108,33 @@ function sunset_footer_info(){
     function sunset_infinite_scroll(){
         $page_no = $_POST['page']+1;
         $prev_no = $_POST['prev'];
+        $archive = $_POST['archive'];
+        
         if ($prev_no != 0 && $_POST['page']!= 1){
             $page_no = $_POST['page'] - 1;
         }
-        
-        $scrol_posts = new WP_Query([
+        $args =[
             'post_type' => 'post',
             'post_status' => 'publish',
             'paged'       =>   $page_no,
-        ]);
+        ];
+        if($category != '0'){
+            $cat_var = explode('/',$archive);
+            $type = ($cat_var[1] == 'category') ? 'category_name' : $cat_var[1];
+            $args[$type]=$cat_var[2];
+        }
+        if($archive != '0'){
+            $arch_name = $cat_var[1];
+            $arch_var = $cat_var[2];
+            $page_url = "/".$arch_name."/".$arch_var."/";
+            
+        }else{
+            $page_url='/';
+        }
+        
+        $scrol_posts = new WP_Query($args);
         if($scrol_posts->have_posts()){?>
-<div class="page-limit" data-pageurl="<?php echo $page_no <= 1 ? "/":"/page/$page_no"?>">
+<div class="page-limit" data-pageurl="<?php echo $page_no <= 1 ? $page_url : $page_url,'page/',$page_no?>">
     <?php while ($scrol_posts->have_posts()){
             $scrol_posts->the_post();
             
