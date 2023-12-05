@@ -118,15 +118,32 @@ function sunset_footer_info(){
             'post_status' => 'publish',
             'paged'       =>   $page_no,
         ];
-        if($category != '0'){
-            $cat_var = explode('/',$archive);
-            $type = ($cat_var[1] == 'category') ? 'category_name' : $cat_var[1];
-            $args[$type]=$cat_var[2];
+        if($archive != '0'){
+            $arch_var = explode('/',$archive);
+            $flipped = array_flip($arch_var);
+            if(isset($flipped["category"])||isset($flipped["tag"])||isset($flipped["author"])){
+                if(isset($flipped["category"])){
+                    $type="category_name";
+                    $key = "category";
+                }elseif(isset($flipped["tag"])){
+                    $type="tag";
+                    $key=$type;
+                }else{
+                    $type="author";
+                    $key=$type;
+                }
+                $currKey = array_keys($arch_var,$key);
+                $nextKey = $currKey[0]+1;
+                $value = $arch_var[$nextKey];
+                
+            }
+          
+            $args[$type]=$value;
         }
         if($archive != '0'){
-            $arch_name = $cat_var[1];
-            $arch_var = $cat_var[2];
-            $page_url = "/".$arch_name."/".$arch_var."/";
+            $arch_name = $key;
+            $arch_val= $value;
+            $page_url = "/".$arch_name."/".$arch_val."/";
             
         }else{
             $page_url='/';
@@ -134,7 +151,7 @@ function sunset_footer_info(){
         
         $scrol_posts = new WP_Query($args);
         if($scrol_posts->have_posts()){?>
-<div class="page-limit" data-pageurl="<?php echo $page_no <= 1 ? $page_url : $page_url,'page/',$page_no?>">
+<div class="page-limit" data-pageurl="<?php echo $page_no <= 1 ? $page_url : $page_url."page/".$page_no?>">
     <?php while ($scrol_posts->have_posts()){
             $scrol_posts->the_post();
             
@@ -146,3 +163,14 @@ function sunset_footer_info(){
  wp_reset_postdata();
         die();
     }}
+
+ /* =====================================
+    Custom Url builder for infinite scroll
+    ===================================== */
+
+   function sunset_url_builder(){
+        $http = (isset($_SERVER["HTTPS"]) ? 'https://' : 'http://');
+        $referer = $http.$_SERVER["HTTP_HOST"];
+        $archive_url = $referer.$_SERVER["REQUEST_URI"];
+        return $archive_url;
+    }
