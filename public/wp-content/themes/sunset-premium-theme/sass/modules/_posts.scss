@@ -3,10 +3,11 @@
   text-align: center;
   border-bottom: 2px solid $light-white;
   position: relative;
-  opacity: 0;
   animation: all 1s ease-in-out;
+  display: none;
+
   &--reveal {
-    opacity: 1;
+    display: block;
   }
   &__header {
     margin-bottom: 2rem;
@@ -129,7 +130,7 @@
 =====================================  
 */
   &__header--video iframe {
-    height: 100%;
+    height: 10%;
     width: 100%;
     margin-bottom: 2rem;
   }
