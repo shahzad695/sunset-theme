@@ -121,25 +121,29 @@ function sunset_footer_info(){
         if($archive != '0'){
             $arch_var = explode('/',$archive);
             $flipped = array_flip($arch_var);
-            if(isset($flipped["category"])||isset($flipped["tag"])||isset($flipped["author"])){
-                if(isset($flipped["category"])){
+
+            switch(isset($flipped)){
+                case $flipped["category"];
                     $type="category_name";
-                    $key = "category";
-                }elseif(isset($flipped["tag"])){
+                    $key ="category";
+                    break;
+                case $flipped["tag"];
                     $type="tag";
                     $key=$type;
-                }else{
+                    break;
+                case $flipped["author"];
                     $type="author";
                     $key=$type;
-                }
+                    break;
+
+            }
                 $currKey = array_keys($arch_var,$key);
                 $nextKey = $currKey[0]+1;
                 $value = $arch_var[$nextKey];
                 
             }
-          
             $args[$type]=$value;
-        }
+            
         if($archive != '0'){
             $arch_name = $key;
             $arch_val= $value;

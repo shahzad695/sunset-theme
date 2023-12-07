@@ -4,6 +4,7 @@ global $wp_query;
 $maxpageNo = $wp_query->max_num_pages;
 $page_num = get_query_var('paged')? get_query_var('paged'):1
 ?>
+<?php the_archive_title('<h1 class="text-center">', '</h1>'); ?>
 <div class="header__loadbtn header__loadbtn--prev <?php echo $page_num <= 1 ? "hide":""?>">
 
     <span class="sunset-icon sunset-loading"></span><a href="" class="btn link link-btn btn--loadmore" data-page="<?php echo $page_num;?>"
@@ -12,6 +13,7 @@ $page_num = get_query_var('paged')? get_query_var('paged'):1
 
 </div>
 <main class="header" id="post_container">
+
 
     <div class="page-limit" data-pageurl="<?php echo sunset_url_builder();?>" data-maxpage="<?php echo $maxpageNo;?>"
         data-adminurl="<?php echo admin_url('admin-ajax.php') ?>">
