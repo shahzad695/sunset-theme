@@ -12,7 +12,7 @@ $page_num = get_query_var('paged')? get_query_var('paged'):1
         Load Prev Posts</a>
 
 </div>
-<main class="header" id="post_container">
+<main class="post__container" id="post_container">
 
 
     <div class="page-limit" data-pageurl="<?php echo sunset_url_builder();?>" data-maxpage="<?php echo $maxpageNo;?>"

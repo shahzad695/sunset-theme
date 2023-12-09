@@ -5,7 +5,14 @@
   position: relative;
   animation: all 1s ease-in-out;
   display: none;
-
+  &__single {
+    display: block;
+  }
+  &__container {
+    position: relative;
+    max-width: 93rem;
+    margin: 0 auto;
+  }
   &--reveal {
     display: block;
   }

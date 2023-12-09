@@ -3,13 +3,11 @@
   */
 .header {
   position: relative;
-  max-width: 93rem;
-  margin: 0 auto;
   &__image {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 30rem;
+    height: 20rem;
     filter: blur(5px);
   }
   &__content {
@@ -32,11 +30,10 @@
 
   &__nav {
     position: absolute;
-    bottom: 0;
+    bottom: -1;
     left: 0;
     right: 0;
     padding: 1.2rem;
-    max-width: 93rem;
     background-color: rgba(0, 0, 0, 0.3);
     text-align: center;
     display: block;
