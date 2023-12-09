@@ -3,6 +3,12 @@
   text-align: center;
   border-bottom: 2px solid $light-white;
   position: relative;
+  animation: all 1s ease-in-out;
+  display: none;
+
+  &--reveal {
+    display: block;
+  }
   &__header {
     margin-bottom: 2rem;
     text-transform: capitalize;
@@ -76,6 +82,8 @@
     height: 50rem;
     // color: $white;
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 1.2rem;
   }
   &__excerpt--image {
@@ -122,8 +130,113 @@
 =====================================  
 */
   &__header--video iframe {
-    height: 100%;
+    height: 10%;
     width: 100%;
     margin-bottom: 2rem;
+  }
+  /*
+=====================================
+    Gallery Post type
+=====================================  
+*/
+  &__excerpt--gallery {
+    position: absolute;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 1.6rem;
+    background-image: linear-gradient(
+      to bottom,
+      hsla(0, 0%, 0%, 0.498),
+      rgba(186, 186, 186, 0.171)
+    );
+    color: $white;
+    left: 0;
+    right: 0;
+    bottom: 32px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  /*
+=====================================
+    Gallery Post type
+=====================================  
+*/
+  &__content--quote {
+    line-height: 1.3;
+    margin: 0 auto 0.8rem;
+    &:before,
+    :after {
+      content: "";
+      display: inline;
+      position: relative;
+      color: $lighter-grey;
+    }
+    &:before {
+      content: '"';
+    }
+    &:after {
+      content: '"';
+    }
+  }
+  &__quote-author {
+    font-size: 1rem;
+    color: $lightest-grey;
+  }
+  /*
+=====================================
+    Link Post type
+=====================================  
+*/
+  &__title--link {
+    &::before,
+    &::after {
+      content: "";
+    }
+  }
+  &__link {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    margin: 0 auto;
+    padding-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.212);
+  }
+  /*
+=====================================
+  Aside Post type
+=====================================  
+*/
+  &__aside-container {
+    background-color: rgba(0, 0, 0, 0.078);
+  }
+  &__content--aside {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-bottom: 1.6rem;
+    position: relative;
+  }
+  &__thumbnail--aside {
+    height: 8rem;
+    width: 8rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -7;
+    left: 20;
+  }
+  &__header--aside {
+    margin: 0.4rem 0 0.8rem 14rem;
+    text-align: left;
+  }
+  &__excerpt--aside {
+    margin-bottom: 0;
+    flex-basis: 65rem;
+  }
+  &__footer--aside {
+    background-color: rgba(0, 0, 0, 0.158);
+    margin: 0;
+    padding: 0.4rem 0.4rem 0.4rem 13rem;
   }
 }
