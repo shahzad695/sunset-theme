@@ -6,7 +6,7 @@
             <?php echo sunset_post_meta(); ?>
         </div>
     </header>
-    <div class="post__content">
+    <div class="post__content post__content--single">
         <?php the_content();?>
     </div>
     <footer class="post__footer">

@@ -5,9 +5,6 @@
   position: relative;
   animation: all 1s ease-in-out;
   display: none;
-  &__single {
-    display: block;
-  }
   &__container {
     position: relative;
     max-width: 93rem;
@@ -245,5 +242,21 @@
     background-color: rgba(0, 0, 0, 0.158);
     margin: 0;
     padding: 0.4rem 0.4rem 0.4rem 13rem;
+  }
+
+  /*
+=====================================
+  Single Post type
+=====================================  
+*/
+  &__single {
+    display: block;
+    text-align: center;
+    position: relative;
+    max-width: 60rem;
+    margin: 7.4rem auto;
+  }
+  &__content--single {
+    margin-top: 2.4rem;
   }
 }
