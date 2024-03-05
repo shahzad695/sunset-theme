@@ -254,9 +254,26 @@
     text-align: center;
     position: relative;
     max-width: 60rem;
-    margin: 7.4rem auto;
+    margin: 1.6rem auto;
   }
   &__content--single {
     margin-top: 2.4rem;
+  }
+
+  /*
+=====================================
+    Post navigation links
+=====================================  
+*/
+  &__navlinks_cont {
+    display: flex;
+    justify-content: space-between;
+    // gap: 20rem;
+    margin: 1rem 17rem;
+  }
+  &__navlink {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 }

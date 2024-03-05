@@ -178,3 +178,18 @@ function sunset_footer_info(){
         $archive_url = $referer.$_SERVER["REQUEST_URI"];
         return $archive_url;
     }
+
+    /*  =====================================
+            custom post navigation
+        =====================================*/
+
+        
+    function sunset_custom_post_nav() {
+    $nav ='<div class="post__navlinks_cont">';
+    $prev = get_previous_post_link('<span class= "sunset-icon sunset-chevron-left"></span> %link ','%title');
+    $nav.= '<div class= "post__navlink">'.$prev.'</div>';
+    $next = get_next_post_link(' %link <span class= "sunset-icon sunset-chevron-right"> </span>','%title');
+    $nav.='<div class= "post__navlink">'.$next.'</div>';
+    $nav.='</div>';
+    return $nav;
+    }

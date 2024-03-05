@@ -102,6 +102,7 @@ export default class PostLoader {
   }
 
   postRevealHandler(postLoader, newPage) {
+    console.log("Reveal");
     let post = document.querySelectorAll(".post:not(.post--reveal");
     let i = 0;
     let intervalId = setInterval(() => {
