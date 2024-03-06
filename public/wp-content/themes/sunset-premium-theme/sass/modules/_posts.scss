@@ -276,4 +276,23 @@
     align-items: center;
     gap: 1rem;
   }
+
+  /*
+=====================================
+    Post social icons
+=====================================  
+*/
+  &__social--heading {
+    font-size: 1.2rem;
+    border-top: 0.1rem solid $lightest-grey;
+    padding-top: 1rem;
+    margin-top: 1.6rem;
+  }
+  &__social--links {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    list-style: none;
+    color: $light-grey;
+  }
 }
