@@ -10,6 +10,9 @@ get_header();
         the_post();
         get_template_part('template-parts/single', get_post_format());
         echo sunset_custom_post_nav();
+        if (comments_open()){
+            comments_template();
+        }
         }?>
 
 
