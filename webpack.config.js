@@ -9,7 +9,7 @@ module.exports = {
   mode: "production",
 
   entry:
-    "./public/wp-content/themes/sunset-premium-theme/final-assets/sunset-frontend.js",
+    "./public/wp-content/themes/sunset-premium-theme/js/frontendjs/sunset-frontend.js",
 
   output: {
     filename: "sunset-frontend-js-compiled.js",

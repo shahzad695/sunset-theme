@@ -11,7 +11,7 @@ $page_num = get_query_var('paged')? get_query_var('paged'):1
         Load Prev Posts</a>
 
 </div>
-<main class="header" id="post_container">
+<main class="post__container" id="post_container">
 
     <div class="page-limit" data-pageurl="<?php echo $page_num <= 1 ? "/":"/page/$page_num"?>" data-maxpage="<?php echo $maxpageNo;?>"
         data-adminurl="<?php echo admin_url('admin-ajax.php') ?>">

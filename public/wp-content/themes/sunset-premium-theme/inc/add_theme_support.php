@@ -22,7 +22,10 @@ if(!empty($background['sunset_custom_background'])){
 Add support for thumbnail images
 */
 add_theme_support('post-thumbnails');
-
+/* 
+Add support for html5
+*/
+add_theme_support('html5',['comment-list', 'comment-form','search-form', 'gallery','caption']);
 /* 
 Add support for Nav Menu
 */

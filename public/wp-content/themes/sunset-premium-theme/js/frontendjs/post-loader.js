@@ -21,7 +21,7 @@ export default class PostLoader {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         let postLoader = e.target;
-        console.log(this.pageLimit);
+
         this.loadmorePostHandler(postLoader);
       });
     });
@@ -36,7 +36,7 @@ export default class PostLoader {
     let newPage;
     let prevNo = postLoader.dataset.prev;
     let archive = postLoader.dataset.archive;
-    console.log(archive);
+
     if (prevNo == undefined) {
       prevNo = 0;
     }
@@ -55,7 +55,6 @@ export default class PostLoader {
         const result = response.data;
         if (result) {
           if (prevNo != 0) {
-            console.log("prev loader");
             newPage = +pageNo - 1;
 
             this.postContainer.insertAdjacentHTML("afterbegin", result);
@@ -69,7 +68,6 @@ export default class PostLoader {
           this.urlUpdaterHandler();
         }
       } catch (error) {
-        console.log("Error fetching data:", error);
         this.loading = false;
       }
       this.postRevealHandler(postLoader, newPage);
@@ -82,15 +80,13 @@ export default class PostLoader {
 
   urlUpdaterHandler() {
     let pageLimit = document.querySelectorAll(".page-limit");
-    console.log(pageLimit);
     let observer = new IntersectionObserver(
       (pages) => {
         pages.forEach((page) => {
-          console.log("urlUpdater pages ran", page, page.target.baseURI);
           if (!page.isIntersecting) {
             return;
           }
-          console.log(window.history);
+
           window.history.replaceState(
             "",
             "",
@@ -106,13 +102,12 @@ export default class PostLoader {
   }
 
   postRevealHandler(postLoader, newPage) {
+    console.log("Reveal");
     let post = document.querySelectorAll(".post:not(.post--reveal");
     let i = 0;
     let intervalId = setInterval(() => {
-      // console.log(post, post.length, i);
       if (i >= post.length) {
         if (postLoader) {
-          console.log("spin removed");
           this.btnShowHideHandler(postLoader, newPage);
         }
 
