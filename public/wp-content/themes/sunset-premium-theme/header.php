@@ -9,25 +9,41 @@
 </head>
 
 <body <?php body_class()?>>
-    <header class="header">
-        <div class="header__image" style="background-image:url('<?php header_image()?>')">
-        </div>
-        <div class="header__content ">
+    <main class="main">
+        <div class="sidebar sidebar--closed">
+            <div class="sidebar__cont ">
 
-            <h1 class="sunset-icon">
-                <span class="sunset-logo"></span>
-                <span class="hide"><?php bloginfo('name')?></span>
-            </h1>
-            <h2 class="header__descrip"><?php bloginfo('description')?></h2>
-        </div>
+                <a class="sidebar__toggler sidebar__close link">
+                    <span class="sunset-icon sunset-close"></span>
+                </a>
+                <div class="sidebar__scroll">
+                    <?php get_sidebar( ); ?>
+                </div>
 
-        <nav class="header__nav">
-            <?php wp_nav_menu([
+            </div>
+        </div>
+        <header class="header">
+            <a class="sidebar__toggler sidebar__menu link">
+                <span class="sunset-icon sunset-menu"></span>
+            </a>
+            <div class="header__image" style="background-image:url('<?php header_image()?>')">
+            </div>
+            <div class="header__content ">
+
+                <h1 class="sunset-icon">
+                    <span class="sunset-logo"></span>
+                    <span class="hide"><?php bloginfo('name')?></span>
+                </h1>
+                <h2 class="header__descrip"><?php bloginfo('description')?></h2>
+            </div>
+
+            <nav class="header__nav">
+                <?php wp_nav_menu([
                 'theme_location' =>'primary',
                 'container' =>false,
                 'menu_class' =>'header__menu',
                 
             ]);?>
-        </nav>
+            </nav>
 
-    </header>
+        </header>

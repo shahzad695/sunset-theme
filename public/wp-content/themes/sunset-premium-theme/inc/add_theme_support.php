@@ -33,3 +33,17 @@ function sunset_register_nav_menu(){
     register_nav_menu('primary', 'Header Nav Menu');
 }
 add_action('after_setup_theme', 'sunset_register_nav_menu');
+
+// Add support for sidebar
+function sunset_sidebar_registration() {
+    register_sidebar( array(
+        'name'          => __( 'Main Sidebar', 'theme_text_domain' ),
+        'id'            => 'sunset_main_sidebar',
+        'description'   => __( 'Widgets in this area will be shown on the main sidebar.', 'sunset_theme' ),
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'sunset_sidebar_registration' );

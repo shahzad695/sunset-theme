@@ -13,4 +13,9 @@ html {
 body {
   font-family: "Raleway", sans-serif;
   color: $light-grey;
+  overflow-x: hidden;
+}
+.main {
+  transition: transform 0.3s ease-in-out;
+  position: relative;
 }
