@@ -9,6 +9,7 @@
 }
 
 .link {
+  display: inline-block;
   &:link,
   &:visited {
     color: $light-grey;
