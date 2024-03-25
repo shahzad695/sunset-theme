@@ -15,7 +15,24 @@ body {
   color: $light-grey;
   overflow-x: hidden;
 }
+body.no-sroll {
+  overflow-y: hidden;
+}
 .main {
   transition: transform 0.3s ease-in-out;
   position: relative;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(141, 130, 130, 0.5);
+  z-index: 3;
+  display: none;
+
+  &--active {
+    display: block;
+  }
 }

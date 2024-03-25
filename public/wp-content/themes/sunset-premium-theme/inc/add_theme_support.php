@@ -40,9 +40,9 @@ function sunset_sidebar_registration() {
         'name'          => __( 'Main Sidebar', 'theme_text_domain' ),
         'id'            => 'sunset_main_sidebar',
         'description'   => __( 'Widgets in this area will be shown on the main sidebar.', 'sunset_theme' ),
-        'before_widget' => '<div id="%1$s" class="widget %2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h2 class="widget-title">',
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget__title">',
         'after_title'   => '</h2>',
     ) );
 }

@@ -10,7 +10,8 @@
 
 <body <?php body_class()?>>
     <main class="main">
-        <div class="sidebar sidebar--closed">
+        <div class="overlay"></div>
+        <aside class="sidebar sidebar--closed">
             <div class="sidebar__cont ">
 
                 <a class="sidebar__toggler sidebar__close link">
@@ -21,7 +22,7 @@
                 </div>
 
             </div>
-        </div>
+        </aside>
         <header class="header">
             <a class="sidebar__toggler sidebar__menu link">
                 <span class="sunset-icon sunset-menu"></span>

@@ -2,6 +2,6 @@
     return;
 } ?>
 
-<aside id="secondary" class="sidebar__widget-area" role="complementary">
+<div id="secondary" class="sidebar__widget-area" role="complementary">
     <?php dynamic_sidebar( 'sunset_main_sidebar' ); ?>
-</aside>
+</div>
