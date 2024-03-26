@@ -1,4 +1,7 @@
 <?php
+  /*  =====================================
+        sunset porofile custom  widget
+        =====================================*/
 class sunset_profile_widget extends WP_Widget {
      public function __construct() {
         $widget_options = [
@@ -38,8 +41,72 @@ echo $args['after_widget'];
 }
 
 
-// Register the custom widget
-function register_custom_widget() {
-register_widget( 'sunset_profile_widget' );
-}
-add_action( 'widgets_init', 'register_custom_widget' );
+ /*  =====================================
+        sunset popular posts custom  widget
+        =====================================*/
+
+        class sunset_popular_posts_widget extends WP_Widget {
+             public function __construct() {
+                $widget_options = [
+                    'classname' => 'sunset_popular_posts_widget',
+                    'description' => 'Sunset Popular Posts Widget'
+                ];
+
+                parent::__construct('sunset_popular_posts_widget', 'Sunset Popular Posts Widget', $widget_options);
+
+            }
+            public function form( $instance ) {
+                // custom-widget-form.php
+
+                $title = isset($instance['title']) ? $instance['title'] : 'Popular Posts';
+                $number_posts = isset($instance['number_posts']) ?absint( $instance['number_posts']) : 5;
+                
+                $output = '<label for="'. $this->get_field_id('title').'">Title</label>';
+                $output .= '<input type="text" id="'.  $this->get_field_id('title') .'" name="'. $this->get_field_name('title').'" value="'. $title .'" class="widefat" />';
+                $output .= '<label for="'. $this->get_field_id('number_posts').'">Number of Posts</label>';
+                $output .= '<input type="number" id="'.  $this->get_field_id('number_posts') .'" name="'. $this->get_field_name('number_posts').'" value="'. $number_posts .'" class="widefat" />';
+                echo $output;
+                }
+            public function update( $new_instance, $old_instance ) {
+                    // custom-widget-form.php
+                    
+                        $instance = array();
+                        $instance['title'] = sanitize_text_field($new_instance['title']);
+                        $instance['number_posts'] = intval($new_instance['number']);
+                        return $instance;
+                    }
+                public function widget( $args,$instance ) {
+                    $total = absint( $instance['number_posts'] );
+                    $args_popular_posts=[
+                        'posts_per_page' => $total,
+                        'meta_key' => 'sunset_popular_posts',
+                        'orderby' => 'meta_value_num',
+                        'order' => 'DESC'
+                    ];
+
+                    $popular_posts_query = new WP_Query($args_popular_posts);
+
+                echo $args['before_widget'];
+                echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
+                if($popular_posts_query->have_posts()) {
+                    echo '<ul class="widget__list">';
+                    while ($popular_posts_query->have_posts()) {
+                        $popular_posts_query->the_post();
+                        echo '<li class="widget__item"><a class="widget__link link" href="' . get_the_permalink() . '">' . get_the_title() . '</a></li>';
+                    
+                    }
+
+
+                    echo '</ul>';}
+                // Output content after the widget
+                echo $args['after_widget'];
+                }}
+
+                // Register the custom widgets
+                function register_custom_widget() {
+                register_widget( 'sunset_popular_posts_widget' );
+
+                register_widget( 'sunset_profile_widget' );
+
+                }
+                add_action( 'widgets_init', 'register_custom_widget' );

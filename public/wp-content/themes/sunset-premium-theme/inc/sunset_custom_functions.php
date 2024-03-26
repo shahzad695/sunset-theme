@@ -213,3 +213,20 @@ function sunset_footer_info(){
         // }
     
     }
+
+     /*  =====================================
+            custom popular posts widget
+        =====================================*/
+
+        function sunset_custom_popular_posts_widget($postId) {
+            $metakey = 'sunset_popular_posts';
+            $views = get_post_meta($postId, $metakey, true);
+            $count= (empty($views)) ? 0 : $views;
+            $count++;
+            
+            update_post_meta($postId, $metakey, $count);
+           
+           return $count;
+        }
+
+        remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
