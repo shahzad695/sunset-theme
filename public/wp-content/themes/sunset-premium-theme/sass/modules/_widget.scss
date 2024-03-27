@@ -18,6 +18,9 @@
 
   &__item {
     margin-bottom: 0.2rem;
+    &--popular {
+      margin-bottom: 0.5rem;
+    }
   }
 
   &__link {
@@ -32,5 +35,15 @@
     &:active {
       color: $dark-white;
     }
+  }
+  &__image {
+    height: 1.75rem;
+    width: 1.75rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+    background-color: aliceblue;
+    border-radius: 50%;
+    padding: 0.05rem;
+    box-shadow: 0.2rem 0.2rem 1rem rgba(143, 142, 142, 0.5);
   }
 }

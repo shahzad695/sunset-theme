@@ -10,7 +10,7 @@
 
 <body <?php body_class()?>>
     <main class="main">
-        <div class="overlay"></div>
+        <div class="overlay sidebar__toggler"></div>
         <aside class="sidebar sidebar--closed">
             <div class="sidebar__cont ">
 

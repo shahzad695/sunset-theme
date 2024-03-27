@@ -31,6 +31,7 @@ body.no-sroll {
   background-color: rgba(141, 130, 130, 0.5);
   z-index: 3;
   display: none;
+  cursor: e-resize;
 
   &--active {
     display: block;

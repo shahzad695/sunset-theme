@@ -92,7 +92,7 @@ echo $args['after_widget'];
                     echo '<ul class="widget__list">';
                     while ($popular_posts_query->have_posts()) {
                         $popular_posts_query->the_post();
-                        echo '<li class="widget__item"><a class="widget__link link" href="' . get_the_permalink() . '">' . get_the_title() . '</a></li>';
+                        echo '<li class="widget__item widget__item--popular "><img class="widget__image" src="' . get_template_directory_uri() . '/img/post-'.(get_post_format()?get_post_format():'standard').'.png" alt=""><a class="widget__link link" href="' . get_the_permalink() . '">' . get_the_title() . '</a></li>';
                     
                     }
 
