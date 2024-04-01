@@ -8,3 +8,4 @@ require get_template_directory() .'/inc/custom-filters.php';
 require get_template_directory() .'/inc/sunset_custom_functions.php';
 require get_template_directory() .'/inc/short_codes.php';
 require get_template_directory() .'/inc/widget.php';
+require get_template_directory() .'/inc/sunset_ajax.php';
