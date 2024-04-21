@@ -14,3 +14,16 @@ function sunset_stylify_shortcode($atts,$content=null) {
       </span>';
 
 }
+function sunset_contact_form($atts,$content=null) {
+
+    $attributes=shortcode_atts(
+        [], $atts, 'contact_form');
+          
+    
+
+    ob_start();
+    require  get_template_directory() . '/inc/custom-templates/sunset-contact-form.php';
+    $output = ob_get_clean();
+    return $output;
+}
+add_shortcode('contact_form', 'sunset_contact_form');

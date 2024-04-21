@@ -56,3 +56,27 @@ function sunset_social_media_links($content){
   }
 }
 add_filter('the_content', 'sunset_social_media_links');
+
+ /*     =====================================
+            custom classes to widgets
+        =====================================*/
+
+function add_classes_to_block_editor_widget($content, $block) {
+  // Array of block names to target
+  $targeted_blocks = array(
+      'core/categories', // Categories widget
+      'core/latest-posts', // Latest Posts widget
+      'core/latest-comments', // Recent Comments widget
+      // Add more block names as needed
+  );
+
+  // Check if the block is one of the targeted widgets
+  if (in_array($block['blockName'], $targeted_blocks)) {
+      // Add custom classes to the block output
+      $content = str_replace('<ul', '<ul class="widget__list"', $content);
+      $content = str_replace('<li', '<li class="widget__item"', $content);
+      $content = str_replace('<a', '<a class="widget__link link"', $content);
+  }
+  return $content;
+}
+add_filter('render_block', 'add_classes_to_block_editor_widget', 10, 2);

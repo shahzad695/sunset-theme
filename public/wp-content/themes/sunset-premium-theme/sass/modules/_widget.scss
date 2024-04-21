@@ -1,0 +1,49 @@
+.widget {
+  margin-bottom: 3.6rem;
+  display: block;
+  &__title {
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    background-color: $dark-grey;
+    padding: 0.8rem;
+    box-shadow: 0.2rem 0.2rem 1rem rgba(143, 142, 142, 0.5);
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0.5rem 0.5rem 0.5rem 3rem;
+  }
+
+  &__item {
+    margin-bottom: 0.2rem;
+    &--popular {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__link {
+    // text-decoration: none;
+    &:link,
+    &:visited {
+      color: $light-grey;
+      text-transform: capitalize;
+    }
+
+    &:hover,
+    &:active {
+      color: $dark-white;
+    }
+  }
+  &__image {
+    height: 1.75rem;
+    width: 1.75rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+    background-color: aliceblue;
+    border-radius: 50%;
+    padding: 0.05rem;
+    box-shadow: 0.2rem 0.2rem 1rem rgba(143, 142, 142, 0.5);
+  }
+}

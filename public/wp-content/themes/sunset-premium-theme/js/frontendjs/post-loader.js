@@ -53,6 +53,7 @@ export default class PostLoader {
       try {
         const response = await axios.post(this.url, params);
         const result = response.data;
+
         if (result) {
           if (prevNo != 0) {
             newPage = +pageNo - 1;
